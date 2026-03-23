@@ -11,6 +11,7 @@
       ./nvidia.nix
       ./desktop.nix
       ./keyboard.nix
+      ./develop.nix
     ];
 
   # Bootloader.
@@ -91,9 +92,6 @@
     #  thunderbird
     ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
