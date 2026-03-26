@@ -1,5 +1,4 @@
 { self, inputs, ... }: {
-
   flake.nixosModules.deskboiHardware = { config, lib, pkgs, modulesPath, ... }:
   {
     imports =

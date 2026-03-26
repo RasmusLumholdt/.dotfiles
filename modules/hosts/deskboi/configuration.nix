@@ -3,12 +3,8 @@
   flake.nixosModules.deskboiConfiguration = { config, pkgs, lib, ... }: {
     
       imports =
-        [ # Include the results of the hardware scan.
+        [
           self.nixosModules.deskboiHardware
-          ./nvidia.nix
-          ./desktop.nix
-          ./keyboard.nix
-          ./develop.nix
         ];
 
       # Bootloader.
@@ -16,7 +12,7 @@
       boot.loader.efi.canTouchEfiVariables = true;
 
       networking.hostName = "deskboi"; # Define your hostname.
-      networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+      # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
       # Configure network proxy if necessary
       # networking.proxy.default = "http://user:password@proxy:port/";
