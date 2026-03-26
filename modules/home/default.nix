@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
   flake.homeConfigurations.ralle = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    modules = [ ./home.nix ];
+    modules = [ ../../home.nix ];
   };
 }
