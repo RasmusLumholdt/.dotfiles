@@ -11,6 +11,7 @@
     brave
     appimage-run
     discord
+    bottles
   ];
 
 }

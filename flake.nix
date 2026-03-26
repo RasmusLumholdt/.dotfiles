@@ -4,6 +4,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.11";
+    #flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -15,6 +16,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+
     nixosConfigurations = {
       deskboi = lib.nixosSystem {
 	inherit system;
