@@ -29,6 +29,10 @@
     };
   };
 
+  home.sessionPath = [
+    "~/.config/emacs/bin"
+  ];
+
   # Make Kitty visible to KDE
   # xdg.desktopEntries.kitty = {
   #   name = "Kitty";

@@ -6,7 +6,12 @@
     import-tree.url = "github:vic/import-tree";
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay"; 
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
