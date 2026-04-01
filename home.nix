@@ -30,19 +30,8 @@
   };
 
   home.sessionPath = [
-    "~/.config/emacs/bin"
+    "$HOME/.config/emacs/bin"
   ];
-
-  # Make Kitty visible to KDE
-  # xdg.desktopEntries.kitty = {
-  #   name = "Kitty";
-  #   comment = "Fast, feature-rich terminal emulator";
-  #   exec = "kitty";
-  #   icon = "kitty";
-  #   terminal = false;
-  #   categories = [ "System" "TerminalEmulator" ];
-  #   startupWMClass = "kitty"; # adjust if xprop shows something else
-  # };
 
   home.packages = [
   ];

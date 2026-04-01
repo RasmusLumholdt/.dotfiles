@@ -4,6 +4,7 @@
       emacs
       opencode
       lazygit
+      dotnet-sdk
     ];
   };
 }
