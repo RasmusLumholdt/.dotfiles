@@ -3,6 +3,7 @@
     modules = [
       self.nixosModules.serverboiConfiguration
       self.nixosModules.keyboard
+      self.nixosModules.homeAssistant
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
