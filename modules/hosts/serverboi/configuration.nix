@@ -7,6 +7,7 @@
         [
           self.nixosModules.serverboiHardware
         ];
+	hardware.bluetooth.enable = true;
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
@@ -39,7 +40,7 @@
       users.users.ralle = {
         isNormalUser = true;
         description = "Rasmus";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "docker" ];
       };
 
       # Allow unfree packages
@@ -63,7 +64,6 @@
       ];
 
     virtualisation.docker.enable = true;
-    users.users.rasmus.extraGroups = [ "docker" ];
     virtualisation.oci-containers.backend = "docker";
 
     programs.nix-ld = {
