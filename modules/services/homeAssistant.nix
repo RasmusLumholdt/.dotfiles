@@ -1,23 +1,26 @@
 
 { self, inputs, ... }: {
   flake.nixosModules.homeAssistant = { config, pkgs, ... }: {
+    virtualisation.oci-containers.containers.homeassistant = {
+    image = "ghcr.io/home-assistant/home-assistant:stable";
+    autoStart = true;
 
-      services.home-assistant = {
-      enable = true;
-      openFirewall = true;
-      config = {
-        default_config = {};
+    environment = {
+      TZ = "Europe/Copenhagen";
+    };
 
-        homeassistant = {
-          name = "Home";
-          time_zone = "Europe/Copenhagen";
-          unit_system = "metric";
-        };
+    volumes = [
+      "/var/lib/homeassistant:/config"
+      "/etc/localtime:/etc/localtime:ro"
+      "/run/dbus:/run/dbus:ro"
+    ];
 
-        http = {
-          server_host = "0.0.0.0";
-        };
-      };
+    extraOptions = [
+      "--network=host"
+      "--privileged"
+    ];
+  };
+
   };
   };
 }

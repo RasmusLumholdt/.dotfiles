@@ -62,6 +62,9 @@
          wget
       ];
 
+    virtualisation.docker.enable = true;
+    users.users.rasmus.extraGroups = [ "docker" ];
+    virtualisation.oci-containers.backend = "docker";
 
     programs.nix-ld = {
         enable = true;
