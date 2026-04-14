@@ -5,6 +5,7 @@
       opencode
       lazygit
       dotnet-sdk
+      tree-sitter
     ];
   };
 }
