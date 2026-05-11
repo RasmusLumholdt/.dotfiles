@@ -6,6 +6,7 @@
       steam
       spotify
       remmina
+      nicotine-plus
       vlc
       brave
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default

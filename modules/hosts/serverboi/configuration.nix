@@ -40,7 +40,7 @@
       users.users.ralle = {
         isNormalUser = true;
         description = "Rasmus";
-        extraGroups = [ "networkmanager" "wheel" "docker" ];
+        extraGroups = [ "networkmanager" "wheel" "docker" "audiobookshelf" ];
       };
 
       users.users.audiobookshelf = {
