@@ -12,6 +12,7 @@ let
       shellAliases = {
         ll = "ls -l";
         ".." = "cd ..";
+        "n" = "nvim";
         "hb" = "home-manager switch --flake ~/.dotfiles/";
         "nb" = "sudo nixos-rebuild switch --flake ~/.dotfiles/";
       };
@@ -56,16 +57,6 @@ let
     };
   };
 
-  zellijModule = {
-    programs.zellij = {
-      enable = true;
-      enableBashIntegration = true;
-      settings = {
-        attach_to_session = true;
-      };
-    };
-  };
-
   kittyModule = {
     programs.kitty = {
       enable = true;
@@ -85,7 +76,7 @@ let
   };
 
   desktopProfile = { ... }: {
-    imports = [ baseModule gitModule sshModule kittyModule zellijModule ];
+    imports = [ baseModule gitModule sshModule kittyModule ];
     home.sessionPath = [ "$HOME/.config/emacs/bin" ];
   };
 in {

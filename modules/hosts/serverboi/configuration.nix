@@ -43,6 +43,12 @@
         extraGroups = [ "networkmanager" "wheel" "docker" ];
       };
 
+      users.users.audiobookshelf = {
+        isSystemUser = true;
+        group = "audiobookshelf";
+      };
+      users.groups.audiobookshelf = {};
+
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;
 
