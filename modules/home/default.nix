@@ -57,6 +57,16 @@ let
     };
   };
 
+  zellijModule = {
+    programs.zellij = {
+      enable = true;
+      enableBashIntegration = true;
+      settings = {
+        attach_to_session = true;
+      };
+    };
+  };
+
   kittyModule = {
     programs.kitty = {
       enable = true;
