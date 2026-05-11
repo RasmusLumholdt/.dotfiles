@@ -1,6 +1,6 @@
 
 { self, inputs, ... }: {
-  flake.nixosModules.homeAssistant = { config, pkgs, ... }: {
+  flake.nixosModules.caddy = { config, pkgs, ... }: {
     networking.firewall.allowedTCPPorts = [ 80 443 ]; 
     
     services.caddy = {
