@@ -7,7 +7,7 @@
         enable = true;
         user = "audiobookshelf";
         group = "audiobookshelf";
-        dataDir = "/var/lib/audiobookshelf";
+        dataDir = "audiobookshelf";
         port = 13378;
       };
   };
