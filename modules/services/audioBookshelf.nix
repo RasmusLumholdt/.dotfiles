@@ -2,7 +2,7 @@
 
 { self, inputs, ... }: {
   flake.nixosModules.audioBookshelf = { config, pkgs, ... }: {
-  }
+  
   services.audiobookshelf = {
     enable = true;
     user = "audiobookshelf";
