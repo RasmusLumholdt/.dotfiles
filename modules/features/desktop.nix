@@ -14,7 +14,7 @@
       discord
       bottles
       wireguard-tools
-      protonvpn-gui
+      proton-vpn
     ];
     programs.obs-studio = {
     enable = true;
