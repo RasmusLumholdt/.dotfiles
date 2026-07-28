@@ -19,6 +19,17 @@ let
     };
 
     programs.home-manager.enable = true;
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    programs.yazi = {
+      enable = true;
+      enableBashIntegration = true;
+      shellWrapperName = "y";
+    };
   };
 
   gitModule = {

@@ -1,6 +1,7 @@
 { self, inputs, ... }: {
   flake.nixosModules.homeAssistant = { config, pkgs, ... }: {
-    networking.firewall.allowedTCPPorts = [ 8123 ]; 
+    networking.firewall.allowedTCPPorts = [ 8123 ];
+    networking.firewall.allowedUDPPorts = [ 1900 ];
     virtualisation.oci-containers.containers.homeassistant = {
     image = "ghcr.io/home-assistant/home-assistant:stable";
     autoStart = true;

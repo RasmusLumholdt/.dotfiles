@@ -80,7 +80,7 @@
       users.users.ralle = {
         isNormalUser = true;
         description = "Rasmus";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "dialout" ];
         packages = with pkgs; [
         ];
       };

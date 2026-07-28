@@ -8,7 +8,7 @@
       remmina
       nicotine-plus
       vlc
-      brave
+      unrar
       inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       appimage-run
       discord
@@ -20,6 +20,7 @@
       win-spice
     ];
 
+    programs.kdeconnect.enable = true;
 
     virtualisation.libvirtd = {
       enable = true;
