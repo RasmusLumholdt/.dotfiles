@@ -93,7 +93,9 @@
       };
 
       volumes = [
-        "/etc/homepage:/app/config:ro"
+        "/etc/homepage/settings.yaml:/app/config/settings.yaml:ro"
+        "/etc/homepage/services.yaml:/app/config/services.yaml:ro"
+        "/etc/homepage/docker.yaml:/app/config/docker.yaml:ro"
         "/var/run/docker.sock:/var/run/docker.sock:ro"
       ];
     };
