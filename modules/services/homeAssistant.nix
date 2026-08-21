@@ -1,7 +1,7 @@
 { self, inputs, ... }: {
   flake.nixosModules.homeAssistant = { config, pkgs, ... }: {
     networking.firewall = {
-      allowedTCPPorts = [ 1880 1883 3000 8123 ];
+      allowedTCPPorts = [ 1880 1883 3000 8123 9925 ];
       trustedInterfaces = [ "eno1" ];
     };
 
@@ -90,7 +90,7 @@
     virtualisation.oci-containers.containers.mealie = {
       image = "ghcr.io/mealie-recipes/mealie:latest";
       autoStart = true;
-      ports = [ "127.0.0.1:9925:9000" ];
+      ports = [ "9925:9000" ];
 
       environment = {
         TZ = "Europe/Copenhagen";
