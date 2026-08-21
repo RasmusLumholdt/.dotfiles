@@ -36,6 +36,10 @@
                 description: Automations
             - MQTT:
                 description: Mosquitto broker on port 1883
+        - Food:
+            - Mealie:
+                href: https://mealie.nummi.dk
+                description: Recipes and meal planning
         - Infrastructure:
             - Docker:
                 widget:
@@ -80,6 +84,22 @@
 
       extraOptions = [
         "--network=host"
+      ];
+    };
+
+    virtualisation.oci-containers.containers.mealie = {
+      image = "ghcr.io/mealie-recipes/mealie:latest";
+      autoStart = true;
+      ports = [ "127.0.0.1:9925:9000" ];
+
+      environment = {
+        TZ = "Europe/Copenhagen";
+        BASE_URL = "https://mealie.nummi.dk";
+        ALLOW_SIGNUP = "false";
+      };
+
+      volumes = [
+        "/var/lib/mealie:/app/data"
       ];
     };
 

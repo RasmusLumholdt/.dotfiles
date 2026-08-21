@@ -15,6 +15,8 @@
       bottles
       wireguard-tools
       proton-vpn
+      freecad
+      openscad
 
       virtio-win
       win-spice

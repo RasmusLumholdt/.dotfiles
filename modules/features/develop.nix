@@ -17,6 +17,7 @@
       dotnet-sdk
       tree-sitter
       arduino-cli
+      bruno
     ];
   };
 }
