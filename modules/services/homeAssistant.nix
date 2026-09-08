@@ -82,6 +82,9 @@
         "/var/lib/node-red:/data"
       ];
 
+      environment = {
+        TZ = "Europe/Copenhagen";
+      }; 
       extraOptions = [
         "--network=host"
       ];
