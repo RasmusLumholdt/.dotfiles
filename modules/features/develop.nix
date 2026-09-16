@@ -13,6 +13,7 @@
     environment.systemPackages = with pkgs; [
       emacs
       opencode
+      claude-code
       lazygit
       dotnet-sdk
       tree-sitter

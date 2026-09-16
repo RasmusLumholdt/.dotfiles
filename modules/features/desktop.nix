@@ -17,12 +17,14 @@
       proton-vpn
       freecad
       openscad
+      gpu-screen-recorder
+      gpu-screen-recorder-gtk
+      qbittorrent
+      mixxx
 
       virtio-win
       win-spice
     ];
-
-    programs.kdeconnect.enable = true;
 
     virtualisation.libvirtd = {
       enable = true;
@@ -52,10 +54,12 @@
         GUEST_NAME="$1"
         ACTION="$2"
 
-        # CPU cores 4-15 (cores 2-7, both threads) for VM
-        VM_CPUS="4-15"
-        # CPU cores 0-3 (cores 0-1, both threads) for host
-        HOST_CPUS="0-3"
+        # Ryzen 5800X: SMT siblings pair as N / N+8 (core 0 = cpu 0,8 ...), NOT adjacently.
+        # Must stay in sync with win11's <cputune>.
+        # Physical cores 4-7 for VM (8 vcpus)
+        VM_CPUS="4-7,12-15"
+        # Physical cores 0-3 for host; qemu emulator/iothread pinned to core 0 (0,8)
+        HOST_CPUS="0-3,8-11"
         ALL_CPUS="0-15"
 
         if [ "$ACTION" = "started" ]; then
