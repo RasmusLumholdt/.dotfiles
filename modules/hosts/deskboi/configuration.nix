@@ -46,6 +46,17 @@
       # Enable the KDE Plasma Desktop Environment.
       services.displayManager.sddm.enable = true;
       services.desktopManager.plasma6.enable = true;
+
+      # COSMIC as a second session, picked from the SDDM session menu.
+      # Not enabling services.displayManager.cosmic-greeter — it pulls in greetd,
+      # which would fight SDDM over who owns the login screen.
+      services.desktopManager.cosmic.enable = true;
+
+      # COSMIC defaults to gnome-keyring, Plasma to kwallet. SDDM only unlocks
+      # kwallet by default, so tell its PAM stack to unlock gnome-keyring too;
+      # otherwise the COSMIC session starts with a locked keyring.
+      security.pam.services.sddm.enableGnomeKeyring = true;
+
       services.flatpak.enable = true;
 
       # Configure keymap in X11

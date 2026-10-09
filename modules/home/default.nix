@@ -91,19 +91,37 @@ let
     };
   };
 
+  # Vesktop's own "Start With System" toggle writes an autostart entry pointing at
+  # process.execPath, which on NixOS is the *unwrapped* electron binary. Launching
+  # that directly skips the wrapper that exports GIO_EXTRA_MODULES, XDG_DATA_DIRS,
+  # GDK_PIXBUF_MODULE_FILE etc., and electron dies with SIGILL a few hundred ms in.
+  # Own the file declaratively so it always points at the wrapper.
+  vesktopModule = { pkgs, ... }: {
+    xdg.configFile."autostart/vesktop.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Vesktop
+      Comment=Vesktop autostart script
+      Exec=${pkgs.vesktop}/bin/vesktop
+      StartupNotify=false
+      Terminal=false
+      Icon=vesktop
+    '';
+  };
+
   # Profiles
   serverProfile = { ... }: {
     imports = [ baseModule gitModule sshModule zellijModule ];
   };
 
   desktopProfile = { ... }: {
-    imports = [ baseModule gitModule sshModule kittyModule ];
+    imports = [ baseModule gitModule sshModule kittyModule vesktopModule ];
     home.sessionPath = [ "$HOME/.config/emacs/bin" ];
   };
 in {
   # Expose modules for reuse
   flake.lib.homeModules = {
-    inherit baseModule gitModule sshModule zellijModule kittyModule;
+    inherit baseModule gitModule sshModule zellijModule kittyModule vesktopModule;
     inherit serverProfile desktopProfile;
   };
 

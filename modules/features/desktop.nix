@@ -1,6 +1,13 @@
 { self, inputs, ... }: {
   flake.nixosModules.desktop = { config, pkgs, lib, ... }: {
     networking.firewall.checkReversePath = false;
+
+    # Make Electron/Chromium apps run natively on Wayland instead of XWayland:
+    # sharp rendering, correct scaling, and portal-based screen capture for the
+    # apps that implement it. The nixpkgs wrappers gate the ozone flags on
+    # WAYLAND_DISPLAY too, so this is a no-op in an X11 session.
+    #environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     environment.systemPackages = with pkgs; [
       faugus-launcher
       steam
@@ -11,7 +18,8 @@
       unrar
       inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       appimage-run
-      discord
+      vesktop
+
       bottles
       wireguard-tools
       proton-vpn
@@ -21,6 +29,8 @@
       gpu-screen-recorder-gtk
       qbittorrent
       mixxx
+      smile
+      brave
 
       virtio-win
       win-spice

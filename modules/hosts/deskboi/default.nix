@@ -5,6 +5,7 @@
       self.nixosModules.deskboiConfiguration
       self.nixosModules.nvidia
       self.nixosModules.desktop
+      self.nixosModules.lexicon
       self.nixosModules.keyboard
       self.nixosModules.develop
       inputs.home-manager.nixosModules.home-manager
