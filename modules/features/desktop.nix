@@ -19,12 +19,14 @@
       inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       appimage-run
       vesktop
+      puddletag
 
       bottles
       wireguard-tools
       proton-vpn
       freecad
       openscad
+      self.packages.${pkgs.stdenv.hostPlatform.system}.solidcraft
       gpu-screen-recorder
       gpu-screen-recorder-gtk
       qbittorrent
