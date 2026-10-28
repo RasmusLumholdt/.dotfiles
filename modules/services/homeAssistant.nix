@@ -1,12 +1,14 @@
 { self, inputs, ... }: {
   flake.nixosModules.homeAssistant = { config, pkgs, ... }: {
     networking.firewall = {
-      allowedTCPPorts = [ 1880 1883 3000 8123 9925 ];
+      # 8095 = Music Assistant web UI/API, 8097 = its audio stream server
+      allowedTCPPorts = [ 1880 1883 3000 8095 8097 8123 9925 ];
       trustedInterfaces = [ "eno1" ];
     };
 
     systemd.tmpfiles.rules = [
       "d /var/lib/node-red 0750 1000 1000 -"
+      "d /var/lib/music-assistant 0750 root root -"
     ];
 
     services.mosquitto = {
@@ -36,6 +38,9 @@
                 description: Automations
             - MQTT:
                 description: Mosquitto broker on port 1883
+            - Music Assistant:
+                href: http://192.168.0.107:8095
+                description: Music library and players
         - Food:
             - Mealie:
                 href: https://mealie.nummi.dk
@@ -73,6 +78,28 @@
     "--cap-add=NET_RAW"
   ];
   };
+
+    virtualisation.oci-containers.containers.music-assistant = {
+      image = "ghcr.io/music-assistant/server:latest";
+      autoStart = true;
+
+      environment = {
+        TZ = "Europe/Copenhagen";
+        LOG_LEVEL = "info";
+      };
+
+      volumes = [
+        "/var/lib/music-assistant:/data"
+      ];
+
+      extraOptions = [
+        # host network is required for mDNS discovery of Chromecast/Sonos/AirPlay
+        "--network=host"
+        # needed to read SMB/NFS-mounted music libraries
+        "--cap-add=DAC_READ_SEARCH"
+        "--security-opt=apparmor:unconfined"
+      ];
+    };
 
     virtualisation.oci-containers.containers.node-red = {
       image = "nodered/node-red:latest";
